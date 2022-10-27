@@ -7,6 +7,7 @@ const bird_size = 20;
 const game_width = 500;
 const game_height = 500;
 const gravity = 5;
+const jump_height =100;
 
 function App() {
   const [birdPosition, setBirdPosition] = useState(250);
@@ -22,6 +23,16 @@ function App() {
         clearInterval(timeId);
       };
 });
+
+const handleClick = () => {
+  let updateBirdPosition = birdPosition - jump_height;
+  if (updateBirdPosition < 0) {
+    updateBirdPosition(0)
+  }
+  else {
+    setBirdPosition(updateBirdPosition)
+  }
+};
 
 
   return (
