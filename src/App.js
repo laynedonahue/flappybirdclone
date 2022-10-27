@@ -6,16 +6,26 @@ import { useEffect, useState } from 'react';
 const bird_size = 20;
 const game_width = 500;
 const game_height = 500;
+const gravity = 5;
 
 function App() {
   const [birdPosition, setBirdPosition] = useState(250);
+  
   useEffect(() => {
-
-})
+    let timeId;
+    if (birdPosition < game_height - bird_size) {
+        timeId = setInterval(() => {
+        setBirdPosition((birdPosition) => birdPosition + gravity);
+      }, 24);
+    }
+      return() => {
+        clearInterval(timeId);
+      };
+});
 
 
   return (
-    <Div>
+    <Div onClick={handleClick}>
       <GameBox height={game_height} width={game_width}>
       <Bird size={bird_size} top={birdPosition} />
       </GameBox>
