@@ -18,7 +18,7 @@ function App() {
   const [gameStart, setGameStart] = useState(false);
   const [obstacleHeight, setObstacleHeight] = useState(100);
   const [obstacleLeft, setObstacleLeft] = useState(game_width - obstacle_width);
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(-2)
   
   const bottomObstacleHeight = game_height - obstacle_gap - obstacleHeight;
 
@@ -58,6 +58,7 @@ useEffect(() => {
   const obstacleHasCollidedBottom = birdPosition <= 500 && birdPosition >= 500 - bottomObstacleHeight;
   if (obstacleLeft >= 0 && obstacleLeft <= obstacle_width && (obstacleHasCollidedTop || obstacleHasCollidedBottom)) {
     setGameStart(false);
+    setScore(score => score - 2 - score);
   }
 }, [birdPosition, obstacleHeight, bottomObstacleHeight, obstacleLeft]
 );
@@ -98,7 +99,7 @@ const handleClick = () => {
 
       <Bird size={bird_size} top={birdPosition} />
       </GameBox>
-      {/* <span> {score} </span> */}
+      <span> {score} </span>
     </Div>
   );
 }
