@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/flappybirdclone/static/css/main.073c9b0a.css",
-    "main.js": "/flappybirdclone/static/js/main.a1042083.js",
+    "main.js": "/flappybirdclone/static/js/main.f6f45aef.js",
     "static/js/787.964607f3.chunk.js": "/flappybirdclone/static/js/787.964607f3.chunk.js",
     "index.html": "/flappybirdclone/index.html",
     "main.073c9b0a.css.map": "/flappybirdclone/static/css/main.073c9b0a.css.map",
-    "main.a1042083.js.map": "/flappybirdclone/static/js/main.a1042083.js.map",
+    "main.f6f45aef.js.map": "/flappybirdclone/static/js/main.f6f45aef.js.map",
     "787.964607f3.chunk.js.map": "/flappybirdclone/static/js/787.964607f3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.a1042083.js"
+    "static/js/main.f6f45aef.js"
   ]
 }
