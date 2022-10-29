@@ -18,6 +18,7 @@ function App() {
   const [gameStart, setGameStart] = useState(false);
   const [obstacleHeight, setObstacleHeight] = useState(100);
   const [obstacleLeft, setObstacleLeft] = useState(game_width - obstacle_width);
+  const [score, setScore] = useState(0)
   
   const bottomObstacleHeight = game_height - obstacle_gap - obstacleHeight;
 
@@ -35,15 +36,21 @@ function App() {
 
 useEffect (() => {
   let obstacleId;
-  if (gameStart && obstacleLeft >=0) {
+  if (gameStart && obstacleLeft >= -obstacle_width) {
     obstacleId = setInterval(() => {
-      setObstacleLeft((obstacleLeft) => obstacleLeft -2);
-  })
+      setObstacleLeft((obstacleLeft) => obstacleLeft -5);
+  }, 24);
   return() => {
     clearInterval(obstacleId);
   }
+}
+  else {
+    setObstacleLeft(game_width - obstacle_width);
+    setObstacleHeight(Math.floor(Math.random() * (game_height - obstacle_gap)));
+    
   }
-});
+}
+);
 
 
 const handleClick = () => {
@@ -104,6 +111,7 @@ const GameBox = styled.div`
 height: ${(props) => props.height}px;
 width: ${(props) => props.width}px;
 background-color: black;
+overflow: hidden;
 `;
 
 const Obstacle = styled.div`
