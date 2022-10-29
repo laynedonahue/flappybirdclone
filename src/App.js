@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     let timeId;
-    if ( gameStart && birdPosition < game_height - bird_size) {
+    if (gameStart && birdPosition < game_height - bird_size) {
         timeId = setInterval(() => {
         setBirdPosition((birdPosition) => birdPosition + gravity);
       }, 24);
@@ -42,15 +42,28 @@ useEffect (() => {
   }, 24);
   return() => {
     clearInterval(obstacleId);
-  }
+  };
 }
   else {
     setObstacleLeft(game_width - obstacle_width);
     setObstacleHeight(Math.floor(Math.random() * (game_height - obstacle_gap)));
-    
+    console.log(score)
+    setScore(score => score + 1);
+    console.log(score)
   }
-}
+}, [gameStart, obstacleLeft]); 
+
+useEffect(() => {
+  const obstacleHasCollidedTop = birdPosition >= 0 && birdPosition < obstacleHeight;
+  const obstacleHasCollidedBottom = birdPosition <= 500 && birdPosition >= 500 - bottomObstacleHeight;
+  if (obstacleLeft >= 0 && obstacleLeft <= obstacle_width && (obstacleHasCollidedTop || obstacleHasCollidedBottom)) {
+    setGameStart(false);
+  }
+}, [birdPosition, obstacleHeight, bottomObstacleHeight, obstacleLeft]
 );
+
+
+
 
 
 const handleClick = () => {
@@ -85,6 +98,7 @@ const handleClick = () => {
 
       <Bird size={bird_size} top={birdPosition} />
       </GameBox>
+      {/* <span> {score} </span> */}
     </Div>
   );
 }
@@ -105,6 +119,11 @@ const Div = styled.div`
 display: flex;
 width: 100%;
 justify-content: center;
+& span{
+  color: white;
+  font-size: 24px;
+  position: absolute;
+}
 `;
 
 const GameBox = styled.div`
