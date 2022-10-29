@@ -18,7 +18,7 @@ function App() {
   const [gameStart, setGameStart] = useState(false);
   const [obstacleHeight, setObstacleHeight] = useState(100);
   const [obstacleLeft, setObstacleLeft] = useState(game_width - obstacle_width);
-  const [score, setScore] = useState(-2)
+  const [score, setScore] = useState(-1)
   // had state set to 0, but was getting a 2 from somewhere and was not able to find it.
   
   const bottomObstacleHeight = game_height - obstacle_gap - obstacleHeight;
