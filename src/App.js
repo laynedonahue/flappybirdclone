@@ -19,6 +19,7 @@ function App() {
   const [obstacleHeight, setObstacleHeight] = useState(100);
   const [obstacleLeft, setObstacleLeft] = useState(game_width - obstacle_width);
   const [score, setScore] = useState(-2)
+  // had state set to 0, but was getting a 2 from somewhere and was not able to find it.
   
   const bottomObstacleHeight = game_height - obstacle_gap - obstacleHeight;
 
@@ -59,6 +60,7 @@ useEffect(() => {
   if (obstacleLeft >= 0 && obstacleLeft <= obstacle_width && (obstacleHasCollidedTop || obstacleHasCollidedBottom)) {
     setGameStart(false);
     setScore(score => score - 2 - score);
+    // originally had this as score - score but on fail, it added a 2 again, this seems to resolve it for now
   }
 }, [birdPosition, obstacleHeight, bottomObstacleHeight, obstacleLeft]
 );
